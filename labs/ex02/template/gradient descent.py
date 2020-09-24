@@ -1,13 +1,18 @@
 # -*- coding: utf-8 -*-
 """Gradient Descent"""
-
 def compute_gradient(y, tx, w):
     """Compute the gradient."""
-    # ***************************************************
-    # INSERT YOUR CODE HERE
-    # TODO: compute gradient and loss
-    # ***************************************************
-    raise NotImplementedError
+    # asuming y,w are row vectors again
+    # convert row arrays to matrices in correct shape
+    w = np.matrix(w).T
+    y = np.matrix(y).T
+    
+    # calculate e
+    e =  y- np.dot(tx,w)
+    # calculate gradient
+    gradient = np.dot(tx.T,e)
+    gradient *= -1/ y.shape[0]
+    return np.array(gradient).flatten()
 
 
 def gradient_descent(y, tx, initial_w, max_iters, gamma):
@@ -17,16 +22,13 @@ def gradient_descent(y, tx, initial_w, max_iters, gamma):
     losses = []
     w = initial_w
     for n_iter in range(max_iters):
-        # ***************************************************
-        # INSERT YOUR CODE HERE
-        # TODO: compute gradient and loss
-        # ***************************************************
-        raise NotImplementedError
-        # ***************************************************
-        # INSERT YOUR CODE HERE
-        # TODO: update w by gradient
-        # ***************************************************
-        raise NotImplementedError
+
+        loss = compute_loss(y,tx,w)
+        gradient = compute_gradient(y,tx,w)
+
+        w = w - gamma*gradient
+        print(w)
+
         # store w and loss
         ws.append(w)
         losses.append(loss)
