@@ -26,7 +26,6 @@ def bias_variance_decomposition_visualization(degrees, rmse_tr, rmse_te):
         'b',
         linestyle="-",
         color=([0.7, 0.7, 1]),
-        label='train',
         linewidth=0.3)
     plt.plot(
         degrees,
@@ -34,7 +33,6 @@ def bias_variance_decomposition_visualization(degrees, rmse_tr, rmse_te):
         'r',
         linestyle="-",
         color=[1, 0.7, 0.7],
-        label='test',
         linewidth=0.3)
     plt.plot(
         degrees,
@@ -53,5 +51,6 @@ def bias_variance_decomposition_visualization(degrees, rmse_tr, rmse_te):
     plt.ylim(0.2, 0.7)
     plt.xlabel("degree")
     plt.ylabel("error")
+    plt.legend()
     plt.title("Bias-Variance Decomposition")
     plt.savefig("bias_variance")
